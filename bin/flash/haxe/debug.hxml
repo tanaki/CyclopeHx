@@ -1,0 +1,14 @@
+-main ApplicationMain 
+-lib nme
+-lib tilelayer
+-cp src
+-cp C:\Motion-Twin\haxe\lib\nme/3,5,5/
+-D nme_install_tool
+-D fdb
+-D web
+-swf-version 11
+-swf9 bin/flash/bin/Cyclope.swf
+-swf-header 800:480:31:FFFFFF
+-cp bin/flash/haxe
+--no-inline
+-debug
