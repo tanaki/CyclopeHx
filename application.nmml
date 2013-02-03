@@ -2,24 +2,23 @@
 <project>
 	<!-- NMML reference: https://gist.github.com/1763850 -->
 	
-	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
 	<meta title="Cyclope" package="com.nicolaspigelet.cyclope.Cyclope" version="1.0.0" company="nico" />
 	
 	<!-- output -->
 	<app main="com.nicolaspigelet.cyclope.Main" file="Cyclope" path="bin" />
 	
-	<window background="#ffffff" fps="31" />
+	<window background="#ffffff" fps="31" orientation="landscape" />
 	<window width="800" height="480" unless="mobile" />
-	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
 	
 	<!-- classpath, haxe libs -->
 	<source path="src" />
 	<haxelib name="nme" />
-	<haxelib name="tilelayer" />
+	<haxelib name="actuate" />
 	
 	<!-- assets -->
 	<icon path="assets/nme.svg" />
 	<assets path="assets/img" rename="img" />
+	<assets path="assets/sounds" rename="sounds" type="sound" />
 	
 	<!-- DLLs -->
 	<ndll name="std" />

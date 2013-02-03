@@ -1,5 +1,6 @@
 -main ApplicationMain 
 -lib nme
+-lib actuate
 -lib tilelayer
 -cp src
 -cp C:\Motion-Twin\haxe\lib\nme/3,5,5/

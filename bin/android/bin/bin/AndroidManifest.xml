@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="32" android:versionName="1.0.0" package="com.nicolaspigelet.cyclope.Cyclope">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="35" android:versionName="1.0.0" package="com.nicolaspigelet.cyclope.Cyclope">
 
 	<application android:label="Cyclope" android:debuggable="true" android:icon="@drawable/icon">
 		
 		
 		
-		<activity android:name="MainActivity" android:label="Cyclope" android:configChanges="keyboard|keyboardHidden|orientation">
+		<activity android:name="MainActivity" android:label="Cyclope" android:configChanges="keyboard|keyboardHidden|orientation" android:screenOrientation="landscape">
 			
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

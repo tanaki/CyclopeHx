@@ -87,6 +87,7 @@ const char *__hxcpp_class_path[] = {
 	"C:\Motion-Twin\haxe\lib\nme/3,5,5/",
 	"src/",
 	"C:\Motion-Twin\haxe\lib\nme/3,5,5/",
+	"C:\Motion-Twin\haxe\lib\actuate/1,52/",
 	"C:\Motion-Twin\haxe\lib\tilelayer/0,2,6/",
 	"",
 	"C:\Motion-Twin\haxe/std/cpp/_std/",

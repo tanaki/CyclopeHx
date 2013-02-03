@@ -30,7 +30,8 @@
   <!-- haxelib libraries -->
   <haxelib>
     <library name="nme" />
-    <library name="tilelayer" />
+    <library name="actuate" />
+    <library name="gui" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

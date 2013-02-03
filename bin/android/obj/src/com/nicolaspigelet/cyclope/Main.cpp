@@ -85,7 +85,7 @@ Void Main_obj::init( Dynamic e){
 		HX_STACK_LINE(35)
 		::native::text::TextField tf = ::native::text::TextField_obj::__new();		HX_STACK_VAR(tf,"tf");
 		HX_STACK_LINE(36)
-		tf->set_text(HX_CSTRING("Coucou Pitou !"));
+		tf->set_text(HX_CSTRING("Hello World"));
 		HX_STACK_LINE(37)
 		this->addChild(tf);
 	}
@@ -97,14 +97,14 @@ HX_DEFINE_DYNAMIC_FUNC1(Main_obj,init,(void))
 
 Void Main_obj::main( ){
 {
-		HX_STACK_PUSH("Main::main","com/nicolaspigelet/cyclope/Main.hx",43);
-		HX_STACK_LINE(44)
+		HX_STACK_PUSH("Main::main","com/nicolaspigelet/cyclope/Main.hx",41);
+		HX_STACK_LINE(42)
 		::native::display::Stage stage = ::nme::Lib_obj::get_current()->get_stage();		HX_STACK_VAR(stage,"stage");
-		HX_STACK_LINE(45)
+		HX_STACK_LINE(43)
 		stage->set_scaleMode(::native::display::StageScaleMode_obj::NO_SCALE_dyn());
-		HX_STACK_LINE(46)
+		HX_STACK_LINE(44)
 		stage->set_align(::native::display::StageAlign_obj::TOP_LEFT_dyn());
-		HX_STACK_LINE(48)
+		HX_STACK_LINE(46)
 		::nme::Lib_obj::get_current()->addChild(::com::nicolaspigelet::cyclope::Main_obj::__new());
 	}
 return null();
