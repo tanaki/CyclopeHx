@@ -3,7 +3,6 @@ package com.nicolaspigelet.cyclope;
 /**
  * @author nico
  */
-
 class Config 
 {
 

@@ -1,9 +1,6 @@
 package com.nicolaspigelet.cyclope;
 
-import com.nicolaspigelet.cyclope.events.ScreenEvent;
-import com.nicolaspigelet.cyclope.screens.GameScreen;
-import com.nicolaspigelet.cyclope.screens.HomeScreen;
-import com.nicolaspigelet.cyclope.screens.Screen;
+import com.nicolaspigelet.cyclope.controller.GameController;
 import nme.display.Sprite;
 import nme.events.Event;
 import nme.text.TextField;
@@ -12,12 +9,11 @@ import nme.Lib;
 /**
  * @author nico
  */
-
 class Main extends Sprite 
 {
-	private var gameScreen : GameScreen;
-	private var homeScreen : HomeScreen;
-	
+
+	private var gameController : GameController;
+
 	public function new() 
 	{
 		super();
@@ -41,25 +37,9 @@ class Main extends Sprite
 		Config.STAGE_WIDTH = Lib.current.stage.stageWidth;
 		Config.STAGE_HEIGHT = Lib.current.stage.stageHeight;
 
-		// init screens
-		homeScreen = new HomeScreen();
-		gameScreen = new GameScreen();
-		
-		addChild(homeScreen);
-		addChild(gameScreen);
-		
-		homeScreen.initialize();
-		homeScreen.addEventListener( ScreenEvent.CHANGE, onChangeScreen );
-	}
-	
-	private function onChangeScreen(e:ScreenEvent):Void 
-	{
-		switch (e.getScreenID()) {
-			
-			case GameScreen.SCREEN_ID :
-				// TODO
-			
-		}
+		// init game
+		gameController = new GameController();
+		gameController.initialize();
 	}
 	
 	static public function main() 

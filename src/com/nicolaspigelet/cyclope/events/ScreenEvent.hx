@@ -5,7 +5,6 @@ import nme.events.Event;
 /**
  * @author nico
  */
-
 class ScreenEvent extends Event
 {
 
