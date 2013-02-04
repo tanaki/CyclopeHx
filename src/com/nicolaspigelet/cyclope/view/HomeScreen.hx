@@ -1,4 +1,4 @@
-package com.nicolaspigelet.cyclope.screens;
+package com.nicolaspigelet.cyclope.view;
 
 import com.nicolaspigelet.cyclope.events.ScreenEvent;
 import nme.display.Sprite;
@@ -35,9 +35,8 @@ class HomeScreen extends Screen
 		addChild(btn);
 	}
 	
-	override public function initialize() : Void {
+	override public function start() : Void {
 		
-		trace("override");
 		visible = true;
 		
 		#if mobile
@@ -50,6 +49,17 @@ class HomeScreen extends Screen
 	private function onTouchBtn ( e:Dynamic ) : Void {
 		
 		dispatchEvent( new ScreenEvent(ScreenEvent.CHANGE, GameScreen.SCREEN_ID) );
+	}
+
+	override public function pause() : Void {
+
+		visible = false;
+
+		#if mobile
+		btn.removeEventListener( TouchEvent.TOUCH_END, onTouchBtn );
+		#else
+		btn.removeEventListener( MouseEvent.CLICK, onTouchBtn );
+		#end
 	}
 	
 }

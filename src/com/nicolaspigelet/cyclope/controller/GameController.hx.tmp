@@ -43,7 +43,7 @@ class GameController implements IController {
 		switch (e.getScreenID()) {
 			case GameScreen.SCREEN_ID :
 				homeScreen.pause();
-				gameScreen.start();
+				gameScreen.s();
 
 
 		}

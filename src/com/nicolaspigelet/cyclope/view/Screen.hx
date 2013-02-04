@@ -1,4 +1,4 @@
-package com.nicolaspigelet.cyclope.screens;
+package com.nicolaspigelet.cyclope.view;
 
 import com.nmemvc.view.IView;
 import nme.display.Sprite;
@@ -6,7 +6,7 @@ import nme.display.Sprite;
 /**
  * @author nico
  */
-class Screen extends Sprite implements IView
+class Screen extends Sprite
 {
 
 	public static var SCREEN_ID : String = "PARENT";
@@ -17,15 +17,15 @@ class Screen extends Sprite implements IView
 		visible = false;
 	}
 	
-	public function initialize() : Void {
+	public function start() : Void {
 		visible = true;
 	}
 	
 	public function pause() : Void {
-		
+		visible = false;
 	}
 	
-	public function dispose() : Void {
+	public function destroy() : Void {
 		visible = false;
 	}
 	

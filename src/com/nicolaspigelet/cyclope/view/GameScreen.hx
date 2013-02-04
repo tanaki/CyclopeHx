@@ -1,4 +1,4 @@
-package com.nicolaspigelet.cyclope.screens;
+package com.nicolaspigelet.cyclope.view;
 
 import nme.text.TextField;
 
@@ -19,8 +19,6 @@ class GameScreen extends Screen
 	
 	private function initGraphics() : Void
 	{
-		trace("init game");
-		
 		var tf = new TextField();
 		tf.text = "GAME ON !";
 		tf.x = 20;
@@ -28,8 +26,10 @@ class GameScreen extends Screen
 		addChild(tf);
 	}
 	
-	override public function initialize() : Void {
-		trace("override");
+	override public function start() : Void {
+		
+		visible = true;
+		
 	}
 	
 }

@@ -1,4 +1,4 @@
-package package com.nmemvc.controller;
+package com.nmemvc.controller;
 
 /**
  * @author nico

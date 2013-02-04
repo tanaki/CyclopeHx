@@ -3,7 +3,6 @@ package com.nicolaspigelet.cyclope;
 import com.nicolaspigelet.cyclope.controller.GameController;
 import nme.display.Sprite;
 import nme.events.Event;
-import nme.text.TextField;
 import nme.Lib;
 
 /**
