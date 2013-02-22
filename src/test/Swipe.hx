@@ -1,17 +1,16 @@
-package com.nicolaspigelet.cyclope.view.components.game.characters;
+package com.nicolaspigelet.cyclope;
+
+import com.bit101.components.PushButton;
 
 import nme.display.Sprite;
+import nme.events.Event;
 import nme.events.MouseEvent;
 import nme.events.TouchEvent;
-import nme.events.TextEvent;
 import nme.Lib;
 
-class Human extends Sprite {
+class Main extends Sprite {
 
-
-	inline public static var MOVE : String = "humanMove";
-
-	inline private static var X_THRESHOLD : Float = 80;
+	inline private static var X_THRESHOLD : Float = 50;
 	inline private static var TIME_THRESHOLD : Float = 0.3;
 
 	private var isTouching : Bool = false;
@@ -21,27 +20,36 @@ class Human extends Sprite {
 	private var stopTime : Float;
 	private var deltaX : Float;
 
-	private var humanID : Int;
-
-	public function new ( index : Int ) : Void {
+	public function new () {
 
 		super();
-		humanID = index;
 
-		var color : Int = Math.round(Math.random() * 0xffffff);
-		graphics.beginFill( color );
-		graphics.drawRect( 0,0,50,50 );
-
-		#if mobile
-		addEventListener( TouchEvent.TOUCH_BEGIN, onBegin );
+		#if iphone
+		Lib.current.stage.addEventListener(Event.RESIZE, init);
 		#else
-		addEventListener( MouseEvent.MOUSE_DOWN, onBegin );
+		addEventListener(Event.ADDED_TO_STAGE, init);
+		#end
+	}
+
+	private function init(e):Void 
+	{
+		#if iphone
+		Lib.current.stage.removeEventListener(Event.RESIZE, init);
+		#else
+		removeEventListener(Event.ADDED_TO_STAGE, init);
 		#end
 
+		// Entry point
+		#if mobile
+		Lib.current.stage.addEventListener( TouchEvent.TOUCH_BEGIN, onBegin );
+		#else
+		Lib.current.stage.addEventListener( MouseEvent.MOUSE_DOWN, onBegin );
+		#end
 	}
 
 	private function onBegin ( e : Dynamic ) : Void {
 
+		// Prevent from multitouch
 		if ( isTouching ) return;
 		isTouching = true;
     	deltaX = 0;
@@ -51,21 +59,20 @@ class Human extends Sprite {
 		startX = e.localX;
 		startY = e.localY;
 
-		removeEventListener( TouchEvent.TOUCH_BEGIN, onBegin );
+		Lib.current.stage.removeEventListener( TouchEvent.TOUCH_BEGIN, onBegin );
 		Lib.current.stage.addEventListener( TouchEvent.TOUCH_MOVE, onMove );
 		Lib.current.stage.addEventListener( TouchEvent.TOUCH_END, onStop );
 		#else
 		startX = mouseX;
 		startY = mouseY;
 		
-		removeEventListener( MouseEvent.MOUSE_DOWN, onBegin );
+		Lib.current.stage.removeEventListener( MouseEvent.MOUSE_DOWN, onBegin );
 		Lib.current.stage.addEventListener( MouseEvent.MOUSE_MOVE, onMove );
 		Lib.current.stage.addEventListener( MouseEvent.MOUSE_UP, onStop );
 		#end
-
 	}
 
-	private function onMove ( e:Dynamic ) : Void {
+	private function onMove ( e:TouchEvent ) : Void {
 
 		var currentX : Float;
 		#if mobile
@@ -77,14 +84,14 @@ class Human extends Sprite {
 		deltaX = currentX - startX;
 	}
 
-	private function onStop ( e:Dynamic ) : Void {
+	private function onStop ( e:TouchEvent ) : Void {
 
 		isTouching = false;
 		stopTime = haxe.Timer.stamp();
 
 		if ( Math.abs( deltaX ) > X_THRESHOLD && stopTime - startTime < TIME_THRESHOLD ) {
 			if ( deltaX > 0 ) {
-				dispatchEvent( new TextEvent(Human.MOVE, false, false, Std.string(humanID) ) );
+				trace("direction 1");
 			} else {
 				trace("direction 2");
 			}
@@ -93,12 +100,11 @@ class Human extends Sprite {
 		#if mobile
 		Lib.current.stage.removeEventListener( TouchEvent.TOUCH_MOVE, onMove );
 		Lib.current.stage.removeEventListener( TouchEvent.TOUCH_END, onStop );
-		addEventListener( TouchEvent.TOUCH_BEGIN, onBegin );
+		Lib.current.stage.addEventListener( TouchEvent.TOUCH_BEGIN, onBegin );
 		#else
 		Lib.current.stage.removeEventListener( MouseEvent.MOUSE_MOVE, onMove );
 		Lib.current.stage.removeEventListener( MouseEvent.MOUSE_UP, onStop );
-		addEventListener( MouseEvent.MOUSE_DOWN, onBegin );
+		Lib.current.stage.addEventListener( MouseEvent.MOUSE_DOWN, onBegin );
 		#end
 	}
-
 }

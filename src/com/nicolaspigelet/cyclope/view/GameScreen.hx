@@ -1,5 +1,12 @@
 package com.nicolaspigelet.cyclope.view;
 
+import com.eclecticdesignstudio.motion.Actuate;
+
+import com.nicolaspigelet.cyclope.Config;
+import com.nicolaspigelet.cyclope.view.components.game.characters.Cyclope;
+import com.nicolaspigelet.cyclope.view.components.game.characters.Human;
+
+import nme.events.TextEvent;
 import nme.text.TextField;
 
 /**
@@ -9,21 +16,52 @@ class GameScreen extends Screen
 {
 	public static var SCREEN_ID : String = "GAME";
 
+	private var cyclope : Cyclope;
+	private var humans : Array<Human>;
+	private var humansNumber : Int = 3;
+
 	public function new() 
 	{
 		super();
 		
 		initGraphics();
+		initCharacters();
 		visible = false;
 	}
 	
 	private function initGraphics() : Void
 	{
-		var tf = new TextField();
-		tf.text = "GAME ON !";
-		tf.x = 20;
-		tf.y = 20;
-		addChild(tf);
+		
+	}
+
+	private function initCharacters() : Void
+	{
+		
+		cyclope = new Cyclope();
+		cyclope.x = (Config.STAGE_WIDTH - cyclope.width) * 0.5;
+		cyclope.y = (Config.STAGE_HEIGHT - cyclope.height) * 0.5;
+		addChild(cyclope);
+
+		humans = new Array<Human>();
+		var human : Human;
+		for ( i in 0...humansNumber ) {
+
+			human = new Human(i);
+			human.x = i * 60 + 20;
+			human.y = Config.STAGE_HEIGHT - 60;
+			addChild(human);
+			humans.push(human);
+
+			human.addEventListener( Human.MOVE, onHumanMove );
+		}
+	}
+
+	private function onHumanMove ( e:TextEvent ) : Void {
+
+		var human = cast (e.target, Human);
+		var newX = Config.STAGE_WIDTH - Std.parseFloat(e.text) * 60 - 60;
+		Actuate.tween (human, 1, { x: newX } );
+
 	}
 	
 	override public function start() : Void {

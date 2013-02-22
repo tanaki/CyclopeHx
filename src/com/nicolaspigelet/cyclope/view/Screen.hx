@@ -9,7 +9,7 @@ import nme.display.Sprite;
 class Screen extends Sprite
 {
 
-	public static var SCREEN_ID : String = "PARENT";
+	public static var SCREEN_ID : String = "SCREEN";
 	
 	public function new() 
 	{
