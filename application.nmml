@@ -5,8 +5,8 @@
 	<meta title="Cyclope" package="com.nicolaspigelet.cyclope.Cyclope" version="1.0.0" company="nico" />
 	
 	<!-- output -->
-	<!--app main="com.nicolaspigelet.cyclope.Main" file="Cyclope" path="bin" /-->
-	<app main="test.CollisionTest" file="Cyclope" path="bin" />
+	<app main="com.nicolaspigelet.cyclope.Main" file="Cyclope" path="bin" />
+	<!--app main="test.CollisionTest" file="Cyclope" path="bin" /-->
 	
 	<window background="#ffffff" fps="31" orientation="landscape" />
 	<window width="800" height="480" unless="mobile" />

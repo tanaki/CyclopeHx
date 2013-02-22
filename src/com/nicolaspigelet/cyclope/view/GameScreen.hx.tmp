@@ -57,8 +57,7 @@ class GameScreen extends Screen
 	private function initGameLoop() : Void {
 
 		visualField = new VisualField();
-		visualField.x = Config.STAGE_WIDTH * 0.5;
-		visualField.y = Config.STAGE_HEIGHT * 0.5;
+		visualField.
 		addChild( visualField );
 
 		addEventListener( Event.ENTER_FRAME, onEnterFrame );
