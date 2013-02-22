@@ -3,6 +3,7 @@ package com.nicolaspigelet.cyclope.view;
 import com.eclecticdesignstudio.motion.Actuate;
 
 import com.nicolaspigelet.cyclope.Config;
+import com.nicolaspigelet.cyclope.view.components.game.VisualField;
 import com.nicolaspigelet.cyclope.view.components.game.characters.Cyclope;
 import com.nicolaspigelet.cyclope.view.components.game.characters.Human;
 
@@ -16,6 +17,7 @@ class GameScreen extends Screen
 {
 	public static var SCREEN_ID : String = "GAME";
 
+	private var visualField : VisualField;
 	private var cyclope : Cyclope;
 	private var humans : Array<Human>;
 	private var humansNumber : Int = 3;
@@ -24,19 +26,14 @@ class GameScreen extends Screen
 	{
 		super();
 		
-		initGraphics();
 		initCharacters();
+		initGameLoop();
+
 		visible = false;
-	}
-	
-	private function initGraphics() : Void
-	{
-		
 	}
 
 	private function initCharacters() : Void
 	{
-		
 		cyclope = new Cyclope();
 		cyclope.x = (Config.STAGE_WIDTH - cyclope.width) * 0.5;
 		cyclope.y = (Config.STAGE_HEIGHT - cyclope.height) * 0.5;
@@ -56,6 +53,18 @@ class GameScreen extends Screen
 		}
 	}
 
+	private function initGameLoop() : Void {
+
+		visualField = new VisualField();
+		addChild( visualField );
+
+		addEventListener( Event.ENTER_FRAME, onEnterFrame );
+	}
+
+	private function onEnterFrame ( e:Event ) : Void {
+
+	}
+
 	private function onHumanMove ( e:TextEvent ) : Void {
 
 		var human = cast (e.target, Human);
@@ -68,6 +77,18 @@ class GameScreen extends Screen
 		
 		visible = true;
 		
+	}
+
+
+	/* Utils */
+	public inline static function radToDeg(rad:Float):Float
+	{
+	    return 180 / Math.PI * rad;
+	}
+
+	public inline static function degToRad(deg:Float):Float
+	{
+    	return Math.PI / 180 * deg;
 	}
 	
 }

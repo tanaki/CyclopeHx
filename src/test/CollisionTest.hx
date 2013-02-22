@@ -1,9 +1,4 @@
-package;
-
-// import com.eclecticdesignstudio.motion.Actuate;
-// import com.eclecticdesignstudio.motion.easing.Elastic;
-
-import com.bit101.components.HSlider;
+package test;
 
 import nme.display.Bitmap;
 import nme.display.Sprite;
@@ -17,13 +12,10 @@ import nme.geom.Point;
 import nme.text.TextField;
 import nme.Assets;
 
-
 class CollisionTest extends Sprite {
 	
 	private var eye : Sprite;
 	private var triangle : Sprite;
-	private var angleSlider : HSlider;
-	private var rotationSlider : HSlider;
 	
 	private var ANGLE : Float = 1;
 	private var RADIUS : Float = 300;
@@ -31,7 +23,7 @@ class CollisionTest extends Sprite {
 	public function new () {
 		
 		super ();
-		
+
 		addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
 	}
 
@@ -43,8 +35,6 @@ class CollisionTest extends Sprite {
 		stage.scaleMode = StageScaleMode.NO_SCALE;
 
 		initGame();
-		initSlider();
-
 		addEventListener( Event.ENTER_FRAME, onEnterFrame );
 	}
 
@@ -60,7 +50,7 @@ class CollisionTest extends Sprite {
 		if ( Math.abs(offset) < 5 ) {
 			trace( "COLLISION" );
 		} else {
-			trace("--");
+			// trace("--");
 		}
 
 	}
@@ -107,32 +97,6 @@ class CollisionTest extends Sprite {
 		eye.graphics.lineTo( Math.cos(degToRad(ANGLE)) * RADIUS, Math.sin(degToRad(ANGLE)) * RADIUS );
 		eye.graphics.endFill();
 
-	}
-
-	private function initSlider() : Void {
-
-		var container:Sprite = new Sprite();
-		container.x = 10;
-		container.y = 350;
-		addChild(container);
-
-
-		rotationSlider = new HSlider( container, 0, 0, onSlider );
-		rotationSlider.minimum = 140;
-		rotationSlider.maximum = 160;
-		eye.rotation = rotationSlider.minimum;
-
-		angleSlider = new HSlider( container, 0, 20, onSlider );
-		angleSlider.minimum = 1;
-		angleSlider.maximum = 180;
-		angleSlider.value = ANGLE;
-	}
-
-	private function onSlider ( e:Event ) : Void {
-
-		eye.rotation = rotationSlider.value;
-		ANGLE = angleSlider.value;
-		drawElements(  );
 	}
 
 
